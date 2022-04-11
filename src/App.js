@@ -57,6 +57,10 @@ function App() {
             {drumPads.map((drumPad) => (
               <div className='drum-pad' id={drumPad.text}>
                 {drumPad.text}
+                <audio
+                  className='clip'
+                  id={drumPad.text}
+                  src={drumPad.src}></audio>
               </div>
             ))}
           </div>
