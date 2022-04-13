@@ -1,6 +1,14 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [activeKey, setActiveKey] = useState('');
+  useEffect(() => {
+    document.addEventListener('keydown', (event) => {
+      playSound(event.key.toUpperCase());
+    });
+  }, []);
+
   const drumPads = [
     {
       keyCode: 81,
@@ -52,28 +60,28 @@ function App() {
   const playSound = (selector) => {
     const audio = document.getElementById(selector);
     audio.play();
+    setActiveKey(selector);
   };
 
   return (
     <div className='App'>
       <div id='drum-machine'>
-        <div id='display'>
-          <div className='drum-pads'>
-            {drumPads.map((drumPad) => (
-              <div
-                onClick={() => {
-                  playSound(drumPad.text);
-                }}
-                className='drum-pad'
-                id={drumPad.src}>
-                {drumPad.text}
-                <audio
-                  className='clip'
-                  id={drumPad.text}
-                  src={drumPad.src}></audio>
-              </div>
-            ))}
-          </div>
+        <div id='display'>{activeKey}</div>
+        <div className='drum-pads'>
+          {drumPads.map((drumPad) => (
+            <div
+              onClick={() => {
+                playSound(drumPad.text);
+              }}
+              className='drum-pad'
+              id={drumPad.src}>
+              {drumPad.text}
+              <audio
+                className='clip'
+                id={drumPad.text}
+                src={drumPad.src}></audio>
+            </div>
+          ))}
         </div>
       </div>
     </div>
