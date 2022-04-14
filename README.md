@@ -4,7 +4,7 @@ This project fulfils 7 user stories outlined by FreeCodeCamp and was built using
 
 I implemented this solution using Create React App.
 
-[Click here to view]()
+[Click here to view](https://fcc-lnl-drum-machine.netlify.app/)
 
 ### How to test
 
